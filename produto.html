@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elfbar Ice King 40K — Elfbar Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="style.css">
+<style>
+.breadcrumb { padding: .75rem 0; font-size: .8125rem; color: var(--text-tertiary); }
+.breadcrumb a { color: var(--text-tertiary); }
+.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb span { color: var(--text); font-weight: 500; }
+.breadcrumb .sep { margin: 0 .4rem; }
+
+/* ═══ PRODUCT LAYOUT ═══ */
+.product-main { display: flex; gap: 2rem; padding: 1.5rem 0 2.5rem; }
+.product-gallery { flex: 1; max-width: 55%; }
+.product-info { flex: 1; max-width: 45%; }
+
+/* Gallery */
+.gallery-main {
+  aspect-ratio: 1; background: var(--bg-tertiary);
+  border: 1px solid var(--border-light); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem; margin-bottom: .75rem;
+}
+.gallery-main img { max-height: 400px; }
+.gallery-thumbs {
+  display: flex; gap: .5rem;
+}
+.gallery-thumb {
+  width: 72px; height: 72px; border: 2px solid var(--border-light);
+  border-radius: var(--radius); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: .5rem; background: var(--bg); transition: border-color .15s;
+}
+.gallery-thumb:hover, .gallery-thumb.active { border-color: var(--blue); }
+
+/* Info */
+.product-info .product-name { font-size: 1.25rem; font-weight: 700; -webkit-line-clamp: unset; min-height: auto; }
+.product-info .product-rating { margin: .5rem 0; font-size: .8125rem; }
+.product-info .product-rating .stars { font-size: 1rem; }
+.product-info .product-price-old { font-size: 1rem; }
+.product-info .product-price-current { font-size: 1.75rem; }
+.product-info .product-pix { font-size: .9375rem; margin: .25rem 0 .75rem; }
+
+/* SKU */
+.product-sku { font-size: .75rem; color: var(--text-tertiary); margin-bottom: .5rem; }
+
+/* Variations */
+.variation-block { margin: 1rem 0; }
+.variation-block h4 { font-size: .8125rem; font-weight: 600; margin-bottom: .5rem; }
+.variation-options { display: flex; flex-wrap: wrap; gap: .5rem; }
+.var-option {
+  padding: .5rem 1rem; border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-pill); font-size: .8125rem; font-weight: 500;
+  cursor: pointer; background: var(--bg); transition: all .15s;
+}
+.var-option:hover { border-color: var(--blue); }
+.var-option.selected { border-color: var(--pink); background: rgba(255,93,166,.05); color: var(--pink); }
+
+/* Meta info */
+.product-meta { margin: 1.25rem 0; font-size: .8125rem; color: var(--text-secondary); }
+.product-meta div { display: flex; align-items: center; gap: .5rem; margin-bottom: .35rem; }
+.product-meta i { color: var(--blue); }
+
+/* Shipping simulator */
+.shipping-sim { display: flex; gap: .5rem; margin: 1rem 0; }
+.shipping-sim input {
+  flex: 1; max-width: 160px; height: 44px; padding: 0 1rem;
+  border: 1px solid var(--border-light); border-radius: var(--radius-pill);
+  font-size: .875rem; font-family: var(--font); outline: none;
+}
+.shipping-sim input:focus { border-color: var(--blue); }
+.shipping-sim button {
+  height: 44px; padding: 0 1.5rem;
+  background: var(--blue); color: #fff; border: none;
+  border-radius: var(--radius-pill); font-size: .8125rem; font-weight: 600;
+  cursor: pointer; font-family: var(--font); transition: background .15s;
+}
+.shipping-sim button:hover { background: #535de0; }
+
+/* Tabs */
+.product-tabs { margin: 2rem 0; }
+.tabs-header {
+  display: flex; border-bottom: 1px solid var(--border-light);
+}
+.tab-btn {
+  padding: .75rem 1.25rem; font-size: .875rem; font-weight: 500;
+  cursor: pointer; border: none; background: none;
+  color: var(--text-secondary); border-bottom: 2px solid transparent;
+  font-family: var(--font); transition: all .15s;
+}
+.tab-btn.active { color: var(--text); border-bottom-color: var(--pink); }
+.tab-content { padding: 1.25rem 0; font-size: .875rem; line-height: 1.7; color: var(--text-secondary); }
+.tab-content p { margin-bottom: .75rem; }
+
+/* Related */
+.related-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem; }
+
+@media (width < 768px) {
+  .product-main { flex-direction: column; }
+  .product-gallery, .product-info { max-width: 100%; }
+  .gallery-main img { max-height: 280px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <i data-lucide="zap" style="width:14px;height:14px;"></i>
+      <span>ATENÇÃO — NOVO NÚMERO WHATSAPP:</span>
+      <a href="https://wa.me/5511934741048">(11) 93474-1048</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Ajuda</a>
+      <a href="conta.html">Minha Conta</a>
+      <a href="carrinho.html"><i data-lucide="shopping-cart" style="width:13px;height:13px;margin-right:3px;"></i> Carrinho</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
+    <div class="search-wrap">
+      <i data-lucide="search" class="icon" style="width:16px;height:16px;"></i>
+      <input type="text" placeholder="Buscar produtos…">
+    </div>
+    <div class="header-actions">
+      <div class="h-icon"><i data-lucide="heart" style="width:18px;height:18px;"></i></div>
+      <div class="h-icon">
+        <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i>
+        <span class="count">2</span>
+        <span class="label">Carrinho</span>
+      </div>
+      <div class="h-icon"><i data-lucide="user" style="width:18px;height:18px;"></i> <span class="label">Entrar</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAV -->
+<nav class="catnav">
+  <div class="container">
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="smartphone" style="width:16px;height:16px;"></i></span> Pod Descartável</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="battery-charging" style="width:16px;height:16px;"></i></span> Pod Recarregável</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="sparkles" style="width:16px;height:16px;"></i></span> Lost Mary</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="droplets" style="width:16px;height:16px;"></i></span> Líquidos</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="zap" style="width:16px;height:16px;"></i></span> King 40K</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="pill" style="width:16px;height:16px;"></i></span> Nicotine Pouches</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="tag" style="width:16px;height:16px;"></i></span> Promoção</a>
+    <a href="blog.html"><span class="catnav-icon"><i data-lucide="newspaper" style="width:16px;height:16px;"></i></span> Blog</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <a href="produtos.html">Produtos</a><span class="sep">›</span>
+    <a href="produtos.html">Pod Descartável</a><span class="sep">›</span>
+    <span>Elfbar Ice King 40K</span>
+  </div>
+</div>
+
+<!-- PRODUCT MAIN -->
+<div class="container">
+  <div class="product-main">
+    <!-- Gallery -->
+    <div class="product-gallery">
+      <div class="gallery-main">
+        <img src="assets/2024/12/Elfbar-Ice-King-40K.png" alt="Elfbar Ice King 40K">
+      </div>
+      <div class="gallery-thumbs">
+        <div class="gallery-thumb active">
+          <img src="assets/2024/12/Elfbar-Ice-King-40K.png" alt="Ice King 40K" style="max-height:60px;">
+        </div>
+        <div class="gallery-thumb">
+          <img src="assets/2024/07/elfbar-ice-king-40k-summer-edition.png" alt="Ice King 40K Summer Edition" style="max-height:60px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product-info">
+      <div class="product-name">Elfbar Ice King 40K — Pod Descartável</div>
+      <div class="product-sku">SKU: EK-40K-001</div>
+      <div class="product-rating"><span class="stars">★★★★★</span> 5.00 (6 avaliações)</div>
+
+      <div class="product-price-row" style="margin:.5rem 0">
+        <div class="product-price-top">
+          <span class="product-price-old">R$209,90</span>
+          <span class="product-price-discount">-29%</span>
+        </div>
+        <span class="product-price-current">R$149,90</span>
+      </div>
+      <div class="product-pix">R$ <strong>142,41</strong> no Pix com <strong>5% OFF</strong></div>
+
+      <!-- Variations -->
+      <div class="variation-block">
+        <h4>Selecione o Sabor:</h4>
+        <div class="variation-options">
+          <span class="var-option selected">Ice King 40K</span>
+          <span class="var-option">Summer Edition</span>
+          <span class="var-option">Nic King</span>
+          <span class="var-option">Sour King</span>
+          <span class="var-option">Sweet King</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="product-actions" style="margin:1.25rem 0">
+        <a href="carrinho.html" class="btn-options" style="height:48px;font-size:.9375rem;">Adicionar ao carrinho</a>
+        <button class="btn-whatsapp" style="width:48px;height:48px;"><i data-lucide="message-circle" style="width:22px;height:22px;"></i></a>
+        </div>
+
+      <!-- Shipping -->
+      <div class="shipping-sim">
+        <input type="text" placeholder="Digite seu CEP" maxlength="9">
+        <button>Calcular frete</a>
+        </div>
+
+      <!-- Meta -->
+      <div class="product-meta">
+        <div><i data-lucide="package" style="width:14px;height:14px;"></i> Disponível em estoque</div>
+        <div><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Produto 100% original com garantia</div>
+        <div><i data-lucide="truck" style="width:14px;height:14px;"></i> Envio rápido para todo Brasil</div>
+      </div>
+
+      <!-- Payments -->
+      <div style="font-size:.8125rem;color:var(--text-secondary); padding-top:.75rem;border-top:1px solid var(--border-light);">
+        <strong>Parcelamento:</strong> em até <strong>4x</strong> de <strong>R$37,48</strong> sem juros no cartão
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="product-tabs">
+    <div class="tabs-header">
+      <button class="tab-btn active">Descrição</button>
+      <button class="tab-btn">Especificações</button>
+      <button class="tab-btn">Avaliações (6)</a>
+        </div>
+    <div class="tab-content">
+      <p>O <strong>Elfbar Ice King 40K</strong> é a mais recente inovação da linha premium Elfbar, projetado para oferecer uma experiência vaping prolongada com incríveis <strong>40.000 puffs</strong>.</p>
+      <p>Equipado com tecnologia de ponta, display inteligente para monitorar bateria e líquido, bobina em malha dupla para sabor intenso e consistente. Bateria recarregável USB-C de alta capacidade.</p>
+      <p>Disponível em diversos sabores refrescantes da linha Ice King, incluindo edições especiais sazonais.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED PRODUCTS -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <h3 class="related-title">Produtos relacionados</h3>
+    <div class="products-grid">
+      <div class="product-card">
+        <a href="produto.html">
+          <div class="product-card-image"><img src="assets/2025/07/elfbar-TRIO.png" alt="TRIO 40K" loading="lazy"></div>
+          <div class="product-card-body">
+            <div class="product-name">Elfbar TRIO 40K - Pod Descartável</div>
+            <span class="product-price-current">R$154,90</span>
+            <div class="product-pix">R$ <strong>147,16</strong> no Pix</div>
+          </div>
+        </a>
+        <div class="product-actions" style="padding:0 .75rem .75rem;">
+          <a href="produto.html" class="btn-options">Comprar</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <a href="produto.html">
+          <div class="product-card-image"><img src="assets/2024/12/Elfbar-Ice-King-40K.png" alt="Ice King 40K" loading="lazy"></div>
+          <div class="product-card-body">
+            <div class="product-name">Elfbar Ice King 40K Summer Edition</div>
+            <div class="product-price-top"><span class="product-price-old">R$209,90</span> <span class="product-price-discount">-29%</span></div>
+            <span class="product-price-current">R$149,90</span>
+            <div class="product-pix">R$ <strong>142,41</strong> no Pix</div>
+          </div>
+        </a>
+        <div class="product-actions" style="padding:0 .75rem .75rem;">
+          <a href="produto.html" class="btn-options">Comprar</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <a href="produto.html">
+          <div class="product-card-image"><img src="assets/2024/03/1.jpg" alt="BC10000" loading="lazy"></div>
+          <div class="product-card-body">
+            <div class="product-name">Elfbar BC10000 Puffs - Pod Descartável</div>
+            <span class="product-price-current">R$99,90</span>
+            <div class="product-pix">R$ <strong>94,91</strong> no Pix</div>
+          </div>
+        </a>
+        <div class="product-actions" style="padding:0 .75rem .75rem;">
+          <a href="produto.html" class="btn-options">Comprar</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <a href="produto.html">
+          <div class="product-card-image"><img src="assets/2026/01/elfbar-BC45k-Pro-.png" alt="BC45K Pro" loading="lazy"></div>
+          <div class="product-card-body">
+            <div class="product-name">Elfbar BC45K Pro – Pod Descartável</div>
+            <span class="product-price-current">R$164,90</span>
+            <div class="product-pix">R$ <strong>156,66</strong> no Pix</div>
+          </div>
+        </a>
+        <div class="product-actions" style="padding:0 .75rem .75rem;">
+          <a href="produto.html" class="btn-options">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <h2>Cadastre-se na Newsletter</h2>
+      <p>e receba novidades e promoções</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="text" placeholder="Seu nome">
+        <input type="email" placeholder="Seu melhor email">
+        <button type="submit">Assinar →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
+        <p>Sua loja oficial Elfbar Brasil. Produtos originais com garantia e melhor preço.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <ul>
+          <li><a href="produtos.html">Pod Descartável</a></li>
+          <li><a href="produtos.html">Lost Mary</a></li>
+          <li><a href="produtos.html">Líquidos</a></li>
+          <li><a href="produtos.html">Nicotine Pouches</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Ajuda</h5>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Trocas e Devoluções</a></li>
+          <li><a href="#">Pagamento e Envio</a></li>
+          <li><a href="#">Verificação de Produto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <ul>
+          <li><a href="https://wa.me/5511934741048">(11) 93474-1048</a></li>
+          <li><a href="#">contato@elfbar.com.br</a></li>
+          <li><a href="#">@elfbarbrasil</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Elfbar Brasil. Todos os direitos reservados.</span>
+            <div class="footer-payments">
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#1A1F71"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="1">VISA</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="23" cy="12" r="9" fill="#EB001B"/>
+          <circle cx="30" cy="12" r="9" fill="#F79E1B" opacity=".85"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#2E77BC"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white" letter-spacing=".5">AMEX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="22" cy="12" r="8" fill="#FF6A00"/>
+          <circle cx="28" cy="12" r="8" fill="#00A44B"/>
+          <circle cx="34" cy="12" r="8" fill="#009CDE"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#E60000"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white">HIPERCARD</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="12" fill="#32BCAD"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="white" letter-spacing=".5">PIX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <rect x="10" y="8" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="11" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="14" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="8" width="30" height="1.5" fill="#999"/>
+          <rect x="10" y="11" width="22" height="1.5" fill="#999"/>
+          <text x="20" y="6" font-family="Arial,sans-serif" font-weight="600" font-size="5" fill="#999">BOLETO</text>
+        </svg>
+      </div>
+      </div>
+</footer>
+<script>lucide.createIcons();</script>
+</body>
+</html>

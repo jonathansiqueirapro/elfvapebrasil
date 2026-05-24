@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho — Elfbar Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="style.css">
+<style>
+.breadcrumb { padding: .75rem 0; font-size: .8125rem; color: var(--text-tertiary); }
+.breadcrumb a { color: var(--text-tertiary); }
+.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb .sep { margin: 0 .4rem; }
+.breadcrumb span { color: var(--text); font-weight: 500; }
+
+.page-title { padding: 0 0 1.5rem; }
+.page-title h1 { font-size: 1.5rem; font-weight: 700; }
+
+/* ═══ STEPS ═══ */
+.steps { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2rem; }
+.step { display: flex; align-items: center; gap: .5rem; font-size: .8125rem; color: var(--text-tertiary); }
+.step .num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .75rem; border: 1.5px solid var(--border-light); }
+.step.active { color: var(--text); }
+.step.active .num { background: var(--blue); color: #fff; border-color: var(--blue); }
+.step.done .num { background: #22c55e; color: #fff; border-color: #22c55e; }
+.step-line { width: 60px; height: 1px; background: var(--border-light); margin: 0 .75rem; }
+
+/* ═══ CART ═══ */
+.cart-layout { display: flex; gap: 2rem; align-items: flex-start; padding-bottom: 3rem; }
+.cart-items { flex: 1; }
+.cart-sidebar { width: 360px; flex-shrink: 0; }
+
+.cart-table { width: 100%; border-collapse: collapse; }
+.cart-table th { text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-tertiary); padding-bottom: .75rem; border-bottom: 1px solid var(--border-light); }
+.cart-table td { padding: 1rem 0; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+.cart-item-img { width: 80px; height: 80px; background: var(--bg-tertiary); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; padding: .5rem; }
+.cart-item-img img { max-height: 60px; }
+.cart-item-info { display: flex; flex-direction: column; gap: .15rem; }
+.cart-item-title { font-size: .875rem; font-weight: 600; }
+.cart-item-var { font-size: .75rem; color: var(--text-tertiary); }
+.cart-item-remove { font-size: .75rem; color: #ef4444; cursor: pointer; background: none; border: none; font-family: var(--font); padding: 0; }
+.cart-item-remove:hover { text-decoration: underline; }
+.qty-input { width: 64px; height: 36px; border: 1px solid var(--border-light); border-radius: var(--radius); text-align: center; font-size: .875rem; font-family: var(--font); outline: none; }
+
+/* Sidebar */
+.cart-sidebar-box { background: var(--bg-secondary); border-radius: var(--radius); padding: 1.25rem; }
+.cart-sidebar-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+.cart-sidebar-row { display: flex; justify-content: space-between; font-size: .875rem; color: var(--text-secondary); margin-bottom: .5rem; }
+.cart-sidebar-total { display: flex; justify-content: space-between; font-size: 1.125rem; font-weight: 700; padding-top: .75rem; border-top: 1px solid var(--border-light); margin-top: .5rem; }
+.coupon-input { display: flex; gap: .5rem; margin-bottom: 1.25rem; }
+.coupon-input input { flex: 1; height: 40px; padding: 0 .75rem; border: 1px solid var(--border-light); border-radius: var(--radius-pill); font-size: .8125rem; font-family: var(--font); outline: none; }
+.coupon-input button { height: 40px; padding: 0 1rem; background: var(--text); color: #fff; border: none; border-radius: var(--radius-pill); font-size: .75rem; font-weight: 600; cursor: pointer; }
+.btn-checkout { width: 100%; height: 48px; background: var(--pink); color: #fff; border: none; border-radius: var(--radius-pill); font-size: .9375rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: background .15s; margin-top: .75rem; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.btn-checkout:hover { background: var(--pink-hover); }
+
+@media (width < 768px) {
+  .cart-layout { flex-direction: column; }
+  .cart-sidebar { width: 100%; }
+  .cart-table th { display: none; }
+  .cart-table td { display: block; text-align: right; padding: .5rem 0; }
+  .cart-table td:before { content: attr(data-label); float: left; font-weight: 600; font-size: .75rem; color: var(--text-tertiary); text-transform: uppercase; }
+  .cart-item-img { margin: 0 auto .5rem; }
+  .steps { font-size: .75rem; }
+  .step-line { width: 30px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <i data-lucide="zap" style="width:14px;height:14px;"></i>
+      <span>ATENÇÃO — NOVO NÚMERO WHATSAPP:</span>
+      <a href="https://wa.me/5511934741048">(11) 93474-1048</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Ajuda</a>
+      <a href="conta.html">Minha Conta</a>
+      <a href="carrinho.html"><i data-lucide="shopping-cart" style="width:13px;height:13px;margin-right:3px;"></i> Carrinho</a>
+    </div>
+  </div>
+</div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
+    <div class="search-wrap">
+      <i data-lucide="search" class="icon" style="width:16px;height:16px;"></i>
+      <input type="text" placeholder="Buscar produtos…">
+    </div>
+    <div class="header-actions">
+      <div class="h-icon"><i data-lucide="heart" style="width:18px;height:18px;"></i></div>
+      <div class="h-icon"><i data-lucide="shopping-cart" style="width:18px;height:18px;"></i><span class="count">2</span><span class="label">Carrinho</span></div>
+      <div class="h-icon"><i data-lucide="user" style="width:18px;height:18px;"></i> <span class="label">Entrar</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="catnav">
+  <div class="container">
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="smartphone" style="width:16px;height:16px;"></i></span> Pod Descartável</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="sparkles" style="width:16px;height:16px;"></i></span> Lost Mary</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="droplets" style="width:16px;height:16px;"></i></span> Líquidos</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="zap" style="width:16px;height:16px;"></i></span> King 40K</a>
+    <a href="produtos.html"><span class="catnav-icon"><i data-lucide="pill" style="width:16px;height:16px;"></i></span> Nicotine Pouches</a>
+    <a href="blog.html"><span class="catnav-icon"><i data-lucide="newspaper" style="width:16px;height:16px;"></i></span> Blog</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <span>Carrinho</span>
+  </div>
+  <div class="page-title"><h1>Carrinho</h1></div>
+
+  <div class="steps">
+    <div class="step active"><span class="num">1</span> Carrinho</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="num">2</span> Checkout</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="num">3</span> Confirmação</div>
+  </div>
+
+  <div class="cart-layout">
+    <div class="cart-items">
+      <table class="cart-table">
+        <thead><tr><th>Produto</th><th>Preço</th><th>Qtd</th><th>Subtotal</th></tr></thead>
+        <tbody>
+          <tr>
+            <td data-label="Produto">
+              <div style="display:flex;gap:.75rem;align-items:center;">
+                <div class="cart-item-img"><img src="assets/2024/12/Elfbar-Ice-King-40K.png" alt="Ice King 40K"></div>
+                <div class="cart-item-info">
+                  <div class="cart-item-title">Elfbar Ice King 40K</div>
+                  <div class="cart-item-var">Sabor: Original</div>
+                  <button class="cart-item-remove">Remover</button>
+        </div>
+              </div>
+            </td>
+            <td data-label="Preço">R$149,90</td>
+            <td data-label="Qtd"><input class="qty-input" type="number" value="1" min="1"></td>
+            <td data-label="Subtotal">R$149,90</td>
+          </tr>
+          <tr>
+            <td data-label="Produto">
+              <div style="display:flex;gap:.75rem;align-items:center;">
+                <div class="cart-item-img"><img src="assets/2024/03/1.jpg" alt="BC10000"></div>
+                <div class="cart-item-info">
+                  <div class="cart-item-title">Elfbar BC10000 Puffs</div>
+                  <div class="cart-item-var">Sabor: Blueberry Ice</div>
+                  <button class="cart-item-remove">Remover</button>
+        </div>
+              </div>
+            </td>
+            <td data-label="Preço">R$99,90</td>
+            <td data-label="Qtd"><input class="qty-input" type="number" value="2" min="1"></td>
+            <td data-label="Subtotal">R$199,80</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cart-sidebar">
+      <div class="cart-sidebar-box">
+        <h3>Resumo</h3>
+        <div class="coupon-input">
+          <input type="text" placeholder="Cupom de desconto">
+          <button>Aplicar</button>
+        </div>
+        <div class="cart-sidebar-row"><span>Subtotal</span><span>R$349,70</span></div>
+        <div class="cart-sidebar-row"><span>Frete</span><span>Calcular no checkout</span></div>
+        <div class="cart-sidebar-total"><span>Total</span><span>R$349,70</span></div>
+        <a href="checkout.html" class="btn-checkout">Seguir para o checkout →</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <h2>Cadastre-se na Newsletter</h2>
+      <p>e receba novidades e promoções</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="text" placeholder="Seu nome"><input type="email" placeholder="Seu melhor email">
+        <button type="submit">Assinar →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;"><p>Sua loja oficial Elfbar Brasil.</p></div>
+      <div class="footer-col"><h5>Produtos</h5><ul><li><a href="produtos.html">Pod Descartável</a></li><li><a href="produtos.html">Lost Mary</a></li><li><a href="produtos.html">Líquidos</a></li></ul></div>
+      <div class="footer-col"><h5>Ajuda</h5><ul><li><a href="#">FAQ</a></li><li><a href="#">Trocas e Devoluções</a></li><li><a href="#">Pagamento e Envio</a></li></ul></div>
+      <div class="footer-col"><h5>Contato</h5><ul><li><a href="https://wa.me/5511934741048">(11) 93474-1048</a></li><li><a href="#">contato@elfbar.com.br</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Elfbar Brasil.</span>
+            <div class="footer-payments">
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#1A1F71"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="1">VISA</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="23" cy="12" r="9" fill="#EB001B"/>
+          <circle cx="30" cy="12" r="9" fill="#F79E1B" opacity=".85"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#2E77BC"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white" letter-spacing=".5">AMEX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="22" cy="12" r="8" fill="#FF6A00"/>
+          <circle cx="28" cy="12" r="8" fill="#00A44B"/>
+          <circle cx="34" cy="12" r="8" fill="#009CDE"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#E60000"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white">HIPERCARD</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="12" fill="#32BCAD"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="white" letter-spacing=".5">PIX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <rect x="10" y="8" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="11" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="14" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="8" width="30" height="1.5" fill="#999"/>
+          <rect x="10" y="11" width="22" height="1.5" fill="#999"/>
+          <text x="20" y="6" font-family="Arial,sans-serif" font-weight="600" font-size="5" fill="#999">BOLETO</text>
+        </svg>
+      </div>
+      </div>
+</footer>
+<script>lucide.createIcons();</script>
+</body>
+</html>

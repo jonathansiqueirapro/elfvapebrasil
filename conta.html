@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Conta — Elfbar Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="style.css">
+<style>
+.breadcrumb { padding: .75rem 0; font-size: .8125rem; color: var(--text-tertiary); }
+.breadcrumb a { color: var(--text-tertiary); }
+.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb .sep { margin: 0 .4rem; }
+.breadcrumb span { color: var(--text); font-weight: 500; }
+
+.account-layout { display: flex; gap: 2rem; padding: 1.5rem 0 3rem; }
+.account-nav { width: 220px; flex-shrink: 0; }
+.account-nav ul { list-style: none; display: flex; flex-direction: column; gap: .25rem; }
+.account-nav a { display: flex; align-items: center; gap: .5rem; padding: .625rem .75rem; border-radius: var(--radius); font-size: .8125rem; color: var(--text-secondary); transition: all .15s; }
+.account-nav a:hover, .account-nav a.active { background: var(--bg-secondary); color: var(--text); font-weight: 500; }
+.account-nav a i { width: 18px; text-align: center; }
+.account-content { flex: 1; min-width: 0; }
+.account-content h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .75rem; }
+.form-group { display: flex; flex-direction: column; gap: .25rem; }
+.form-group label { font-size: .8125rem; font-weight: 600; }
+.form-group input { height: 44px; padding: 0 .75rem; border: 1px solid var(--border-light); border-radius: var(--radius); font-size: .875rem; font-family: var(--font); outline: none; }
+.form-group input:focus { border-color: var(--blue); }
+.btn-save { height: 44px; padding: 0 2rem; background: var(--blue); color: #fff; border: none; border-radius: var(--radius-pill); font-size: .875rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: background .15s; }
+.btn-save:hover { background: #535de0; }
+
+.orders-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.orders-table th { text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-tertiary); padding-bottom: .75rem; border-bottom: 1px solid var(--border-light); }
+.orders-table td { padding: .75rem 0; border-bottom: 1px solid var(--border-light); }
+.orders-table .badge { display: inline-block; padding: 2px 8px; border-radius: var(--radius-pill); font-size: .6875rem; font-weight: 600; }
+.badge-completed { background: #dcfce7; color: #166534; }
+.badge-processing { background: #fef3c7; color: #92400e; }
+
+@media (width < 768px) {
+  .account-layout { flex-direction: column; }
+  .account-nav { width: 100%; }
+  .account-nav ul { flex-direction: row; overflow-x: auto; gap: 0; }
+  .account-nav a { white-space: nowrap; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container"><div class="topbar-left"><i data-lucide="zap" style="width:14px;height:14px;"></i><span>ATENÇÃO — NOVO NÚMERO WHATSAPP:</span><a href="https://wa.me/5511934741048">(11) 93474-1048</a></div><div class="topbar-right"><a href="#">Ajuda</a><a href="conta.html">Minha Conta</a><a href="carrinho.html"><i data-lucide="shopping-cart" style="width:13px;height:13px;margin-right:3px;"></i> Carrinho</a></div></div></div>
+<header class="header"><div class="header-inner"><a href="index.html" class="logo"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a><div class="search-wrap"><i data-lucide="search" class="icon" style="width:16px;height:16px;"></i><input type="text" placeholder="Buscar produtos…"></div><div class="header-actions"><div class="h-icon"><i data-lucide="heart" style="width:18px;height:18px;"></i></div><div class="h-icon"><i data-lucide="shopping-cart" style="width:18px;height:18px;"></i><span class="count">2</span></div><div class="h-icon"><i data-lucide="user" style="width:18px;height:18px;"></i> <span class="label">Entrar</span></div></div></div></header>
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Minha Conta</span></div>
+  <div class="account-layout">
+    <nav class="account-nav">
+      <ul>
+        <li><a href="#" class="active"><i data-lucide="user" style="width:16px;height:16px;"></i> Painel</a></li>
+        <li><a href="#"><i data-lucide="shopping-bag" style="width:16px;height:16px;"></i> Pedidos</a></li>
+        <li><a href="#"><i data-lucide="heart" style="width:16px;height:16px;"></i> Lista de Desejos</a></li>
+        <li><a href="#"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Endereços</a></li>
+        <li><a href="#"><i data-lucide="log-out" style="width:16px;height:16px;"></i> Sair</a></li>
+      </ul>
+    </nav>
+    <div class="account-content">
+      <h2>Meus dados</h2>
+      <div class="form-row"><div class="form-group"><label>Nome</label><input type="text" value="João Silva"></div><div class="form-group"><label>Sobrenome</label><input type="text" value=""></div></div>
+      <div class="form-row"><div class="form-group"><label>E-mail</label><input type="email" value="joao@email.com"></div><div class="form-group"><label>Telefone</label><input type="text" value="(11) 99999-9999"></div></div>
+      <button class="btn-save">Salvar alterações</button>
+      <h2 style="margin-top:2rem;">Últimos pedidos</h2>
+      <table class="orders-table">
+        <thead><tr><th>Pedido</th><th>Data</th><th>Status</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>#5842</td><td>22 Maio 2026</td><td><span class="badge badge-completed">Concluído</span></td><td>R$149,90</td></tr>
+          <tr><td>#5831</td><td>15 Maio 2026</td><td><span class="badge badge-processing">Processando</span></td><td>R$249,80</td></tr>
+          <tr><td>#5819</td><td>08 Maio 2026</td><td><span class="badge badge-completed">Concluído</span></td><td>R$89,90</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<section class="newsletter"><div class="container"><div class="newsletter-inner"><h2>Cadastre-se na Newsletter</h2><p>e receba novidades e promoções</p><form class="newsletter-form" onsubmit="return false;"><input type="text" placeholder="Seu nome"><input type="email" placeholder="Seu melhor email"><button type="submit">Assinar →</button></form></div></div></section>
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-col"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;"><p>Sua loja oficial Elfbar Brasil.</p></div><div class="footer-col"><h5>Produtos</h5><ul><li><a href="produtos.html">Pod Descartável</a></li></ul></div><div class="footer-col"><h5>Ajuda</h5><ul><li><a href="#">FAQ</a></li></ul></div><div class="footer-col"><h5>Contato</h5><ul><li><a href="https://wa.me/5511934741048">(11) 93474-1048</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 Elfbar Brasil.</span>      <div class="footer-payments">
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#1A1F71"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="1">VISA</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="23" cy="12" r="9" fill="#EB001B"/>
+          <circle cx="30" cy="12" r="9" fill="#F79E1B" opacity=".85"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#2E77BC"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white" letter-spacing=".5">AMEX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="22" cy="12" r="8" fill="#FF6A00"/>
+          <circle cx="28" cy="12" r="8" fill="#00A44B"/>
+          <circle cx="34" cy="12" r="8" fill="#009CDE"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#E60000"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white">HIPERCARD</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="12" fill="#32BCAD"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="white" letter-spacing=".5">PIX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <rect x="10" y="8" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="11" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="14" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="8" width="30" height="1.5" fill="#999"/>
+          <rect x="10" y="11" width="22" height="1.5" fill="#999"/>
+          <text x="20" y="6" font-family="Arial,sans-serif" font-weight="600" font-size="5" fill="#999">BOLETO</text>
+        </svg>
+      </div></div></footer>
+<script>lucide.createIcons();</script>
+</body>
+</html>

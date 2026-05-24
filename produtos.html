@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos — Elfbar Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="style.css">
+<style>
+.breadcrumb {
+  padding: .75rem 0;
+  font-size: .8125rem; color: var(--text-tertiary);
+}
+.breadcrumb a { color: var(--text-tertiary); }
+.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb span { color: var(--text); font-weight: 500; }
+
+/* ═══ BREADCRUMB ═══ */
+.breadcrumb { padding: .75rem 0; font-size: .8125rem; color: var(--text-tertiary); }
+.breadcrumb a { color: var(--text-tertiary); }
+.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb span { color: var(--text); font-weight: 500; }
+.breadcrumb .sep { margin: 0 .4rem; }
+
+/* ═══ PAGE TITLE ═══ */
+.page-title {
+  padding: 0 0 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.page-title h1 { font-size: 1.5rem; font-weight: 700; }
+.page-title .count { font-size: .875rem; color: var(--text-secondary); }
+
+/* ═══ TOOLBAR ═══ */
+.toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .75rem 0; margin-bottom: 1.25rem;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.toolbar-left { display: flex; align-items: center; gap: .75rem; }
+.toolbar-right { display: flex; align-items: center; gap: .5rem; }
+.filter-toggle {
+  display: flex; align-items: center; gap: .35rem;
+  padding: .5rem 1rem; border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill); background: var(--bg);
+  cursor: pointer; font-size: .8125rem; font-weight: 500; font-family: var(--font);
+  transition: background .15s;
+}
+.filter-toggle:hover { background: var(--bg-secondary); }
+.sort-select {
+  padding: .5rem 1rem; border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill); background: var(--bg);
+  font-size: .8125rem; font-family: var(--font); cursor: pointer;
+  outline: none;
+}
+
+/* ═══ LAYOUT ═══ */
+.shop-layout { display: flex; gap: 1.5rem; }
+.shop-sidebar { width: 260px; flex-shrink: 0; display: none; }
+.shop-sidebar.open { display: block; }
+.shop-content { flex: 1; min-width: 0; }
+
+/* ═══ FILTERS ═══ */
+.filter-block { margin-bottom: 1.25rem; }
+.filter-block h4 {
+  font-size: .8125rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .05em; margin-bottom: .625rem; color: var(--text);
+}
+.filter-block ul { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+.filter-block label {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .8125rem; color: var(--text-secondary); cursor: pointer;
+  padding: .25rem 0;
+}
+.filter-block input[type="checkbox"] {
+  accent-color: var(--blue); width: 16px; height: 16px;
+}
+.filter-block .count { margin-left: auto; color: var(--text-tertiary); font-size: .75rem; }
+.price-range { display: flex; align-items: center; gap: .5rem; }
+.price-range input {
+  width: 100%; padding: .5rem; border: 1px solid var(--border-light);
+  border-radius: var(--radius); font-size: .8125rem; font-family: var(--font);
+  outline: none;
+}
+.price-range input:focus { border-color: var(--blue); }
+
+/* ═══ PAGINATION ═══ */
+.pagination {
+  display: flex; align-items: center; justify-content: center; gap: .35rem;
+  padding: 2rem 0;
+}
+.pagination a, .pagination span {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 40px; height: 40px;
+  border: 1px solid var(--border-light); border-radius: var(--radius);
+  font-size: .875rem; color: var(--text); transition: all .15s;
+}
+.pagination a:hover { border-color: var(--blue); color: var(--blue); }
+.pagination .current { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+@media (width < 768px) {
+  .shop-sidebar { width: 100%; }
+  .page-title { flex-direction: column; align-items: flex-start; gap: .25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP BAR ═══ -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <i data-lucide="zap" style="width:14px;height:14px;"></i>
+      <span>ATENÇÃO — NOVO NÚMERO WHATSAPP:</span>
+      <a href="https://wa.me/5511934741048">(11) 93474-1048</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Ajuda</a>
+      <a href="conta.html">Minha Conta</a>
+      <a href="carrinho.html"><i data-lucide="shopping-cart" style="width:13px;height:13px;margin-right:3px;"></i> Carrinho</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
+    <div class="search-wrap">
+      <i data-lucide="search" class="icon" style="width:16px;height:16px;"></i>
+      <input type="text" placeholder="Buscar produtos…">
+    </div>
+    <div class="header-actions">
+      <div class="h-icon"><i data-lucide="heart" style="width:18px;height:18px;"></i></div>
+      <div class="h-icon">
+        <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i>
+        <span class="count">2</span>
+        <span class="label">Carrinho</span>
+      </div>
+      <div class="h-icon"><i data-lucide="user" style="width:18px;height:18px;"></i> <span class="label">Entrar</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ CATEGORY NAV ═══ -->
+<nav class="catnav">
+  <div class="container">
+    <a href="produtos.html?cat=pod-descartavel">
+      <span class="catnav-icon"><i data-lucide="smartphone" style="width:16px;height:16px;"></i></span>
+      Pod Descartável
+    </a>
+    <a href="produtos.html?cat=pod-recarregavel">
+      <span class="catnav-icon"><i data-lucide="battery-charging" style="width:16px;height:16px;"></i></span>
+      Pod Recarregável
+    </a>
+    <a href="produtos.html?cat=lost-mary">
+      <span class="catnav-icon"><i data-lucide="sparkles" style="width:16px;height:16px;"></i></span>
+      Lost Mary
+    </a>
+    <a href="produtos.html?cat=liquidos">
+      <span class="catnav-icon"><i data-lucide="droplets" style="width:16px;height:16px;"></i></span>
+      Líquidos
+    </a>
+    <a href="produtos.html?cat=king-40k">
+      <span class="catnav-icon"><i data-lucide="zap" style="width:16px;height:16px;"></i></span>
+      King 40K
+    </a>
+    <a href="produtos.html?cat=nicotine-pouches">
+      <span class="catnav-icon"><i data-lucide="pill" style="width:16px;height:16px;"></i></span>
+      Nicotine Pouches
+    </a>
+    <a href="produtos.html?cat=promocao">
+      <span class="catnav-icon"><i data-lucide="tag" style="width:16px;height:16px;"></i></span>
+      Promoção
+    </a>
+    <a href="blog.html">
+      <span class="catnav-icon"><i data-lucide="newspaper" style="width:16px;height:16px;"></i></span>
+      Blog
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ BREADCRUMB ═══ -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <span>Produtos</span>
+  </div>
+
+  <div class="page-title">
+    <h1>Produtos <span class="count">(64 produtos)</span></h1>
+  </div>
+</div>
+
+<!-- ═══ SHOP LAYOUT ═══ -->
+<div class="container">
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <button class="filter-toggle" onclick="document.querySelector('.shop-sidebar').classList.toggle('open')">
+        <i data-lucide="sliders-horizontal" style="width:14px;height:14px;"></i>
+        Filtros
+      </a>
+        </div>
+    <div class="toolbar-right">
+      <select class="sort-select">
+        <option>Mais vendidos</option>
+        <option>Menor preço</option>
+        <option>Maior preço</option>
+        <option>Novidades</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="shop-layout">
+    <!-- SIDEBAR -->
+    <aside class="shop-sidebar open">
+      <div class="filter-block">
+        <h4>Categoria</h4>
+        <ul>
+          <li><label><input type="checkbox" checked> Pod Descartável <span class="count">(47)</span></label></li>
+          <li><label><input type="checkbox"> Pod Recarregável <span class="count">(47)</span></label></li>
+          <li><label><input type="checkbox"> Lost Mary <span class="count">(30)</span></label></li>
+          <li><label><input type="checkbox"> Líquidos Elfbar <span class="count">(10)</span></label></li>
+          <li><label><input type="checkbox"> King 40K <span class="count">(8)</span></label></li>
+          <li><label><input type="checkbox"> Nicotine Pouches <span class="count">(5)</span></label></li>
+          <li><label><input type="checkbox"> Promoção <span class="count">(9)</span></label></li>
+        </ul>
+      </div>
+      <div class="filter-block">
+        <h4>Preço</h4>
+        <div class="price-range">
+          <input type="text" placeholder="R$ 0" style="width:80px;">
+          <span>—</span>
+          <input type="text" placeholder="R$ 200" style="width:80px;">
+        </div>
+      </div>
+      <div class="filter-block">
+        <h4>Avaliação</h4>
+        <ul>
+          <li><label><input type="checkbox"> ★★★★★ <span class="count">(8)</span></label></li>
+          <li><label><input type="checkbox"> ★★★★★ & up <span class="count">(12)</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="shop-content">
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2026/03/elfbar-GH-33k-pro.png" alt="Elfbar GH 33K Pro" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar GH 33K Pro - 33000 Puffs - Pod Descartável</div>
+              <div class="product-price-row">
+                <span class="product-price-current">R$119,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>113,91</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Comprar</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2026/03/elfbar-joinone-kit-25k-puffs.png" alt="Elfbar JoinOne Kit" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar JoinOne Kit - Bateria + Refil 25K Puffs</div>
+              <div class="product-price-row">
+                <span class="product-price-current">R$189,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>180,41</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Comprar</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2026/01/elfbar-BC45k-Pro-.png" alt="Elfbar BC45K Pro" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar BC45K Pro – Pod Descartável</div>
+              <div class="product-price-row">
+                <span class="product-price-current">R$164,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>156,66</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Comprar</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2025/12/Elfbar-E-Shisha-Luxe-18K.png" alt="Elfbar E-Shisha Luxe" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar E-Shisha Luxe 18K - Pod DTL</div>
+              <div class="product-price-row">
+                <span class="product-price-current">R$109,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>104,41</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Comprar</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <!-- Product 5 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2024/12/Elfbar-Ice-King-40K.png" alt="Ice King 40K" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar Ice King 40K - Pod Descartável</div>
+              <div class="product-rating"><span class="stars">★★★★★</span> 5.00</div>
+              <div class="product-price-row">
+                <div class="product-price-top">
+                  <span class="product-price-old">R$209,90</span>
+                  <span class="product-price-discount">-29%</span>
+                </div>
+                <span class="product-price-current">R$149,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>142,41</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Ver opções</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <!-- Product 6 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2025/09/Elfbar-Adjust-My-Flavor-40K-1.png" alt="Adjust My Flavor 40K" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar Adjust My Flavor 40K - Pod Descartável</div>
+              <div class="product-price-row">
+                <span class="product-price-current">R$129,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>123,41</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Comprar</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <!-- Product 7 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2025/04/elfbar-BC15K-1.png" alt="BC15K" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar BC15K – Pod Descartável</div>
+              <div class="product-price-row">
+                <div class="product-price-top">
+                  <span class="product-price-old">R$139,90</span>
+                  <span class="product-price-discount">-14%</span>
+                </div>
+                <span class="product-price-current">R$119,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>113,91</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Comprar</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+        <!-- Product 8 -->
+        <div class="product-card">
+          <a href="produto.html">
+            <div class="product-card-image">
+              <img src="assets/2024/07/SALT.png" alt="FS18000" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <div class="product-name">Elfbar FS18000 Puffs - Pod Descartável</div>
+              <div class="product-price-row">
+                <span class="product-price-current">R$119,90</span>
+              </div>
+              <div class="product-pix">R$ <strong>113,91</strong> no Pix</div>
+            </div>
+          </a>
+          <div class="product-actions" style="padding:0 .75rem .75rem;">
+            <a href="produto.html" class="btn-options">Comprar</a>
+            <a href="https://wa.me/5511934741048" target="_blank" class="btn-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="pagination">
+        <span class="current">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">⋯</a>
+        <a href="#">8</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NEWSLETTER ═══ -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <h2>Cadastre-se na Newsletter</h2>
+      <p>e receba novidades e promoções</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="text" placeholder="Seu nome">
+        <input type="email" placeholder="Seu melhor email">
+        <button type="submit">Assinar →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
+        <p>Sua loja oficial Elfbar Brasil. Produtos originais com garantia e melhor preço.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <ul>
+          <li><a href="produtos.html">Pod Descartável</a></li>
+          <li><a href="produtos.html">Lost Mary</a></li>
+          <li><a href="produtos.html">Líquidos</a></li>
+          <li><a href="produtos.html">Nicotine Pouches</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Ajuda</h5>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Trocas e Devoluções</a></li>
+          <li><a href="#">Pagamento e Envio</a></li>
+          <li><a href="#">Verificação de Produto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <ul>
+          <li><a href="https://wa.me/5511934741048">(11) 93474-1048</a></li>
+          <li><a href="#">contato@elfbar.com.br</a></li>
+          <li><a href="#">@elfbarbrasil</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Elfbar Brasil. Todos os direitos reservados.</span>
+            <div class="footer-payments">
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#1A1F71"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="1">VISA</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="23" cy="12" r="9" fill="#EB001B"/>
+          <circle cx="30" cy="12" r="9" fill="#F79E1B" opacity=".85"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#2E77BC"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white" letter-spacing=".5">AMEX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <circle cx="22" cy="12" r="8" fill="#FF6A00"/>
+          <circle cx="28" cy="12" r="8" fill="#00A44B"/>
+          <circle cx="34" cy="12" r="8" fill="#009CDE"/>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="#E60000"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="white">HIPERCARD</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="12" fill="#32BCAD"/>
+          <text x="30" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="white" letter-spacing=".5">PIX</text>
+        </svg>
+        <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="24" rx="3" fill="white"/>
+          <rect x="10" y="8" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="11" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="14" width="40" height="1.5" fill="#666"/>
+          <rect x="10" y="8" width="30" height="1.5" fill="#999"/>
+          <rect x="10" y="11" width="22" height="1.5" fill="#999"/>
+          <text x="20" y="6" font-family="Arial,sans-serif" font-weight="600" font-size="5" fill="#999">BOLETO</text>
+        </svg>
+      </div>
+      </div>
+</footer>
+<script>lucide.createIcons();</script>
+</body>
+</html>

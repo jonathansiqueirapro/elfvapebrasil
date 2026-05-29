@@ -119,7 +119,6 @@
     <div class="topbar-right">
       <a href="#">Ajuda</a>
       <a href="conta.html">Minha Conta</a>
-      <a href="carrinho.html"><i data-lucide="shopping-cart" style="width:13px;height:13px;margin-right:3px;"></i> Carrinho</a>
     </div>
   </div>
 </div>
@@ -127,7 +126,7 @@
 <!-- ═══ HEADER ═══ -->
 <header class="header">
   <div class="header-inner">
-    <a href="index.html" class="logo"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
+    <a href="index.html" class="logo"><img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
     <div class="search-wrap">
       <i data-lucide="search" class="icon" style="width:16px;height:16px;"></i>
       <input type="text" placeholder="Buscar produtos…">
@@ -202,8 +201,8 @@
       <button class="filter-toggle" onclick="document.querySelector('.shop-sidebar').classList.toggle('open')">
         <i data-lucide="sliders-horizontal" style="width:14px;height:14px;"></i>
         Filtros
-      </a>
-        </div>
+      </button>
+    </div>
     <div class="toolbar-right">
       <select class="sort-select">
         <option>Mais vendidos</option>
@@ -424,28 +423,21 @@
   </div>
 </div>
 
-<!-- ═══ NEWSLETTER ═══ -->
-<section class="newsletter">
-  <div class="container">
-    <div class="newsletter-inner">
-      <h2>Cadastre-se na Newsletter</h2>
-      <p>e receba novidades e promoções</p>
-      <form class="newsletter-form" onsubmit="return false;">
-        <input type="text" placeholder="Seu nome">
-        <input type="email" placeholder="Seu melhor email">
-        <button type="submit">Assinar →</button>
-      </form>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
+        <img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
         <p>Sua loja oficial Elfbar Brasil. Produtos originais com garantia e melhor preço.</p>
+        <div class="footer-newsletter">
+          <h5>Newsletter</h5>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="text" placeholder="Seu nome">
+            <input type="email" placeholder="Seu melhor email">
+            <button type="submit">Assinar →</button>
+          </form>
+        </div>
       </div>
       <div class="footer-col">
         <h5>Produtos</h5>

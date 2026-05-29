@@ -44,8 +44,9 @@
 .product-info .product-rating { margin: .5rem 0; font-size: .8125rem; }
 .product-info .product-rating .stars { font-size: 1rem; }
 .product-info .product-price-old { font-size: 1rem; }
-.product-info .product-price-current { font-size: 1.75rem; }
-.product-info .product-pix { font-size: .9375rem; margin: .25rem 0 .75rem; }
+.product-info .product-price-current { font-size: .9375rem; }
+.product-info .product-pix { font-size: 1rem; margin: .35rem 0 .75rem; }
+.product-info .product-pix strong { font-size: 2rem; }
 
 /* SKU */
 .product-sku { font-size: .75rem; color: var(--text-tertiary); margin-bottom: .5rem; }
@@ -121,7 +122,6 @@
     <div class="topbar-right">
       <a href="#">Ajuda</a>
       <a href="conta.html">Minha Conta</a>
-      <a href="carrinho.html"><i data-lucide="shopping-cart" style="width:13px;height:13px;margin-right:3px;"></i> Carrinho</a>
     </div>
   </div>
 </div>
@@ -129,7 +129,7 @@
 <!-- HEADER -->
 <header class="header">
   <div class="header-inner">
-    <a href="index.html" class="logo"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
+    <a href="index.html" class="logo"><img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
     <div class="search-wrap">
       <i data-lucide="search" class="icon" style="width:16px;height:16px;"></i>
       <input type="text" placeholder="Buscar produtos…">
@@ -199,9 +199,8 @@
           <span class="product-price-old">R$209,90</span>
           <span class="product-price-discount">-29%</span>
         </div>
-        <span class="product-price-current">R$149,90</span>
       </div>
-      <div class="product-pix">R$ <strong>142,41</strong> no Pix com <strong>5% OFF</strong></div>
+      <div class="product-pix">R$ <strong>142,41</strong> no Pix com 5% OFF</div>
 
       <!-- Variations -->
       <div class="variation-block">
@@ -218,14 +217,14 @@
       <!-- Actions -->
       <div class="product-actions" style="margin:1.25rem 0">
         <a href="carrinho.html" class="btn-options" style="height:48px;font-size:.9375rem;">Adicionar ao carrinho</a>
-        <button class="btn-whatsapp" style="width:48px;height:48px;"><i data-lucide="message-circle" style="width:22px;height:22px;"></i></a>
-        </div>
+        <button class="btn-whatsapp" type="button" style="width:48px;height:48px;"><i data-lucide="message-circle" style="width:22px;height:22px;"></i></button>
+      </div>
 
       <!-- Shipping -->
       <div class="shipping-sim">
         <input type="text" placeholder="Digite seu CEP" maxlength="9">
-        <button>Calcular frete</a>
-        </div>
+        <button type="button">Calcular frete</button>
+      </div>
 
       <!-- Meta -->
       <div class="product-meta">
@@ -236,7 +235,7 @@
 
       <!-- Payments -->
       <div style="font-size:.8125rem;color:var(--text-secondary); padding-top:.75rem;border-top:1px solid var(--border-light);">
-        <strong>Parcelamento:</strong> em até <strong>4x</strong> de <strong>R$37,48</strong> sem juros no cartão
+        ou <strong>R$149,90</strong> em até <strong>4x</strong> de <strong>R$37,48</strong> sem juros no cartão
       </div>
     </div>
   </div>
@@ -246,8 +245,8 @@
     <div class="tabs-header">
       <button class="tab-btn active">Descrição</button>
       <button class="tab-btn">Especificações</button>
-      <button class="tab-btn">Avaliações (6)</a>
-        </div>
+      <button class="tab-btn">Avaliações (6)</button>
+    </div>
     <div class="tab-content">
       <p>O <strong>Elfbar Ice King 40K</strong> é a mais recente inovação da linha premium Elfbar, projetado para oferecer uma experiência vaping prolongada com incríveis <strong>40.000 puffs</strong>.</p>
       <p>Equipado com tecnologia de ponta, display inteligente para monitorar bateria e líquido, bobina em malha dupla para sabor intenso e consistente. Bateria recarregável USB-C de alta capacidade.</p>
@@ -318,28 +317,21 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <div class="container">
-    <div class="newsletter-inner">
-      <h2>Cadastre-se na Newsletter</h2>
-      <p>e receba novidades e promoções</p>
-      <form class="newsletter-form" onsubmit="return false;">
-        <input type="text" placeholder="Seu nome">
-        <input type="email" placeholder="Seu melhor email">
-        <button type="submit">Assinar →</button>
-      </form>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
+        <img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
         <p>Sua loja oficial Elfbar Brasil. Produtos originais com garantia e melhor preço.</p>
+        <div class="footer-newsletter">
+          <h5>Newsletter</h5>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="text" placeholder="Seu nome">
+            <input type="email" placeholder="Seu melhor email">
+            <button type="submit">Assinar →</button>
+          </form>
+        </div>
       </div>
       <div class="footer-col">
         <h5>Produtos</h5>

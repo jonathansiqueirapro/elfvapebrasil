@@ -23,7 +23,6 @@
     <div class="topbar-right">
       <a href="#">Ajuda</a>
       <a href="conta.html">Minha Conta</a>
-      <a href="carrinho.html"><i data-lucide="shopping-cart" style="width:13px;height:13px;margin-right:3px;"></i> Carrinho</a>
     </div>
   </div>
 </div>
@@ -31,7 +30,7 @@
 <!-- ═══ HEADER ═══ -->
 <header class="header">
   <div class="header-inner">
-    <a href="index.html" class="logo"><img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
+    <a href="index.html" class="logo"><img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
     <div class="search-wrap">
       <i data-lucide="search" class="icon" style="width:16px;height:16px;"></i>
       <input type="text" placeholder="Buscar produtos…">
@@ -48,84 +47,51 @@
   </div>
 </header>
 
-<!-- ═══ CATEGORY NAV ═══ -->
-<nav class="catnav">
+<!-- ═══ COMMERCE BAR ═══ -->
+<div class="commerce-bar">
   <div class="container">
-    <a href="produtos.html">
-      <span class="catnav-icon"><i data-lucide="smartphone" style="width:16px;height:16px;"></i></span>
-      Pod Descartável
-    </a>
-    <a href="produtos.html">
-      <span class="catnav-icon"><i data-lucide="sparkles" style="width:16px;height:16px;"></i></span>
-      Lost Mary
-    </a>
-    <a href="produtos.html">
-      <span class="catnav-icon"><i data-lucide="droplets" style="width:16px;height:16px;"></i></span>
-      Líquidos
-    </a>
-    <a href="produtos.html">
-      <span class="catnav-icon"><i data-lucide="package" style="width:16px;height:16px;"></i></span>
-      Kit EW
-    </a>
-    <a href="produtos.html">
-      <span class="catnav-icon"><i data-lucide="zap" style="width:16px;height:16px;"></i></span>
-      Elfbar 40K
-    </a>
-    <a href="produtos.html">
-      <span class="catnav-icon"><i data-lucide="pill" style="width:16px;height:16px;"></i></span>
-      Nicotine Pouches
-    </a>
-    <a href="blog.html">
-      <span class="catnav-icon"><i data-lucide="newspaper" style="width:16px;height:16px;"></i></span>
-      Blog
-    </a>
+    <a href="produtos.html" class="commerce-chip"><i data-lucide="ticket-percent" style="width:15px;height:15px;"></i> Ofertas no Pix</a>
+    <a href="produtos.html" class="commerce-chip"><i data-lucide="flame" style="width:15px;height:15px;"></i> Mais vendidos</a>
+    <a href="https://wa.me/5511934741048" target="_blank" class="commerce-chip"><i data-lucide="message-circle" style="width:15px;height:15px;"></i> Atendimento WhatsApp</a>
   </div>
-</nav>
+</div>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero">
-  <a href="produtos.html">
-    <img src="assets/bannerpc.avif" alt="Banner Elfbar">
-  </a>
-</section>
-
-<!-- ═══ SERVICE BADGES ═══ -->
-<section class="services">
+<section class="commerce-hero">
   <div class="container">
-    <div class="services-grid">
-      <div class="service-item">
-        <div class="service-icon"><i data-lucide="banknote" style="width:20px;height:20px;"></i></div>
-        <div class="service-text">
-          <h4>Desconto no Pix</h4>
-          <p>Melhor preço pagando via Pix</p>
-        </div>
+    <div class="commerce-hero-grid">
+      <div class="hero">
+        <button class="hero-arrow prev" type="button" aria-label="Banner anterior"><i data-lucide="chevron-left" style="width:22px;height:22px;"></i></button>
+        <a href="produtos.html">
+          <img src="assets/bannerpc.avif" alt="Banner Elfbar">
+        </a>
+        <button class="hero-arrow next" type="button" aria-label="Próximo banner"><i data-lucide="chevron-right" style="width:22px;height:22px;"></i></button>
       </div>
-      <div class="service-item">
-        <div class="service-icon"><i data-lucide="credit-card" style="width:20px;height:20px;"></i></div>
-        <div class="service-text">
-          <h4>Cartão até 4x</h4>
-          <p>Parcelamos no crédito</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon"><i data-lucide="package" style="width:20px;height:20px;"></i></div>
-        <div class="service-text">
-          <h4>Expresso</h4>
-          <p>Sedex e PAC</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon"><i data-lucide="bike" style="width:20px;height:20px;"></i></div>
-        <div class="service-text">
-          <h4>Motoboy SP</h4>
-          <p>Receba hoje em SP</p>
-        </div>
+      <div class="hero-promo-stack">
+        <a href="produtos.html" class="hero-promo hero-promo-primary">
+          <div class="hero-promo-icon"><i data-lucide="badge-percent" style="width:24px;height:24px;"></i></div>
+          <span>Oferta da semana</span>
+          <strong>Elfbar 40K no Pix</strong>
+          <small>Modelos premium selecionados</small>
+        </a>
+        <a href="produtos.html" class="hero-promo">
+          <div class="hero-promo-icon"><i data-lucide="sparkles" style="width:24px;height:24px;"></i></div>
+          <span>Novidades</span>
+          <strong>Sabores em destaque</strong>
+          <small>Elfbar e Lost Mary</small>
+        </a>
+        <a href="#" class="hero-promo">
+          <div class="hero-promo-icon"><i data-lucide="scan-search" style="width:24px;height:24px;"></i></div>
+          <span>Guia rápido</span>
+          <strong>Escolha por perfil</strong>
+          <small>Puff, sabor e modelo ideal</small>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CATEGORY BADGES ═══ -->
+<!-- ═══ CATEGORY SHORTCUTS ═══ -->
 <section class="cat-badges">
   <div class="container">
     <div class="cat-badges-wrap">
@@ -161,6 +127,18 @@
         <div class="cat-badge-icon"><i data-lucide="star" style="width:20px;height:20px;"></i></div>
         <span>Lançamentos</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST RIBBON ═══ -->
+<section class="trust-ribbon">
+  <div class="container">
+    <div class="trust-ribbon-grid">
+      <div><i data-lucide="shield-check" style="width:18px;height:18px;"></i><span>Originalidade verificada</span></div>
+      <div><i data-lucide="truck" style="width:18px;height:18px;"></i><span>Envio para todo Brasil</span></div>
+      <div><i data-lucide="badge-percent" style="width:18px;height:18px;"></i><span>Pix com melhor preço</span></div>
+      <div><i data-lucide="headphones" style="width:18px;height:18px;"></i><span>Suporte antes da compra</span></div>
     </div>
   </div>
 </section>
@@ -552,70 +530,67 @@
     <div class="section-header">
       <h2 class="section-title">Perguntas Frequentes</h2>
     </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-question">Quais são as vantagens dos cigarros eletrônicos?</div>
+    <div class="faq-panel">
+      <div class="faq-media">
+        <div class="faq-media-icon"><i data-lucide="message-circle-question" style="width:30px;height:30px;"></i></div>
+        <div>
+          <h3>Dúvidas rápidas antes de comprar</h3>
+          <p>Respostas provisórias para orientar o cliente enquanto os textos finais são definidos.</p>
+        </div>
       </div>
-      <div class="faq-item">
-        <div class="faq-question">Quanto tempo dura um pod de 5000 puffs?</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Como saber se o Elfbar está carregado?</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Como saber se é original?</div>
+      <div class="faq-accordion">
+        <details open>
+          <summary>Quais são as vantagens dos produtos Elfbar?</summary>
+          <div class="faq-answer">Produtos compactos, práticos e com variedade de sabores. Verifique sempre disponibilidade, especificações e orientações de uso antes da compra.</div>
+        </details>
+        <details>
+          <summary>Quanto tempo dura um pod?</summary>
+          <div class="faq-answer">A duração varia conforme o modelo, frequência de uso e quantidade de puffs informada pelo fabricante. Consulte a ficha de cada produto para comparar.</div>
+        </details>
+        <details>
+          <summary>Como saber se o Elfbar está carregado?</summary>
+          <div class="faq-answer">Modelos recarregáveis costumam indicar bateria por LED, display ou comportamento durante o carregamento. Use sempre cabo compatível e siga as instruções do produto.</div>
+        </details>
+        <details>
+          <summary>Como saber se é original?</summary>
+          <div class="faq-answer">Compre em canais confiáveis, confira embalagem, lote e código de verificação quando disponível. Em caso de dúvida, fale com o atendimento.</div>
+        </details>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ BLOG ═══ -->
+<!-- ═══ REFERÊNCIAS ═══ -->
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Confira as novidades do blog</h2>
-      <a href="blog.html" class="section-link">Ver todos</a>
+      <h2 class="section-title">Referências úteis</h2>
     </div>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <div class="blog-card-image">[ Imagem do Post ]</div>
-        <div class="blog-card-body">
-          <div class="blog-date">02 Jun 2026</div>
-          <h3>O Que É Dry Hit (Gosto de Queimado) e Por Que Acontece no Vape</h3>
-          <a href="post.html">Continue lendo →</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-card-image">[ Imagem do Post ]</div>
-        <div class="blog-card-body">
-          <div class="blog-date">31 Maio 2026</div>
-          <h3>O Que É Overheating em um Vape e Como Evitar com Seu Elfbar?</h3>
-          <a href="post.html">Continue lendo →</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-card-image">[ Imagem do Post ]</div>
-        <div class="blog-card-body">
-          <div class="blog-date">31 Maio 2026</div>
-          <h3>Como Parar de Fumar: A Transição do Cigarro Comum para o Elfbar</h3>
-          <a href="post.html">Continue lendo →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ NEWSLETTER ═══ -->
-<section class="newsletter">
-  <div class="container">
-    <div class="newsletter-inner">
-      <h2>Cadastre-se na Newsletter</h2>
-      <p>e receba novidades e promoções</p>
-      <form class="newsletter-form" onsubmit="return false;">
-        <input type="text" placeholder="Seu nome">
-        <input type="email" placeholder="Seu melhor email">
-        <button type="submit">Assinar →</button>
-      </form>
+    <div class="references-grid">
+      <a href="#" class="reference-card">
+        <i data-lucide="shield-check" style="width:24px;height:24px;"></i>
+        <h3>Verificação de Produto</h3>
+        <p>Orientações para conferir embalagem, lote e autenticidade.</p>
+        <span>Acessar referência →</span>
+      </a>
+      <a href="#" class="reference-card">
+        <i data-lucide="credit-card" style="width:24px;height:24px;"></i>
+        <h3>Pagamento e Envio</h3>
+        <p>Informações sobre Pix, cartão, prazos e modalidades de entrega.</p>
+        <span>Acessar referência →</span>
+      </a>
+      <a href="#" class="reference-card">
+        <i data-lucide="refresh-cw" style="width:24px;height:24px;"></i>
+        <h3>Trocas e Devoluções</h3>
+        <p>Regras gerais para suporte pós-compra e solicitações.</p>
+        <span>Acessar referência →</span>
+      </a>
+      <a href="https://wa.me/5511934741048" target="_blank" class="reference-card">
+        <i data-lucide="message-circle" style="width:24px;height:24px;"></i>
+        <h3>Atendimento no WhatsApp</h3>
+        <p>Canal direto para tirar dúvidas e acompanhar pedidos.</p>
+        <span>Chamar atendimento →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -625,8 +600,16 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <img src="logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
+        <img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:28px;width:auto;margin-bottom:.75rem;">
         <p>Sua loja oficial Elfbar Brasil. Produtos originais com garantia e melhor preço. Centenas de sabores e suporte humanizado.</p>
+        <div class="footer-newsletter">
+          <h5>Newsletter</h5>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="text" placeholder="Seu nome">
+            <input type="email" placeholder="Seu melhor email">
+            <button type="submit">Assinar →</button>
+          </form>
+        </div>
       </div>
       <div class="footer-col">
         <h5>Produtos</h5>

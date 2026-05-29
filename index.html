@@ -30,7 +30,7 @@
 <!-- ═══ HEADER ═══ -->
 <header class="header">
   <div class="header-inner">
-    <a href="mobile-menu.html" class="mobile-menu-trigger" aria-label="Abrir menu"><i data-lucide="menu" style="width:22px;height:22px;"></i></a>
+    <a href="#mobileMenu" class="mobile-menu-trigger" aria-label="Abrir menu" onclick="openMenu(); return false;"><i data-lucide="menu" style="width:22px;height:22px;"></i></a>
     <a href="index.html" class="logo"><img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil" style="height:32px;width:auto;"></a>
     <div class="search-wrap">
       <i data-lucide="search" class="icon" style="width:16px;height:16px;"></i>
@@ -681,6 +681,50 @@
       </div>
       </div>
 </footer>
-<script>lucide.createIcons();</script>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+  <div class="mm-header">
+    <a href="index.html" class="mm-logo"><img src="assets/logo-elfbar-pod.png.webp" alt="Elfbar Brasil"></a>
+    <button class="mm-close" type="button" aria-label="Fechar menu" onclick="closeMenu()"><i data-lucide="x" style="width:18px;height:18px;"></i></button>
+  </div>
+  <div class="mm-search">
+    <div class="mm-search-wrap">
+      <i data-lucide="search" class="mm-search-icon" style="width:16px;height:16px;"></i>
+      <input type="text" placeholder="Buscar produtos...">
+    </div>
+  </div>
+  <nav class="mm-nav">
+    <ul>
+      <li><a href="produtos.html"><span class="mm-nav-icon"><i data-lucide="smartphone" style="width:18px;height:18px;"></i></span><span class="mm-label">Pod Descartável</span></a></li>
+      <li><a href="produtos.html"><span class="mm-nav-icon"><i data-lucide="sparkles" style="width:18px;height:18px;"></i></span><span class="mm-label">Lost Mary</span></a></li>
+      <li><a href="produtos.html"><span class="mm-nav-icon"><i data-lucide="droplets" style="width:18px;height:18px;"></i></span><span class="mm-label">Líquidos</span></a></li>
+      <li><a href="produtos.html"><span class="mm-nav-icon"><i data-lucide="package" style="width:18px;height:18px;"></i></span><span class="mm-label">Kit EW</span></a></li>
+      <li><a href="produtos.html"><span class="mm-nav-icon"><i data-lucide="zap" style="width:18px;height:18px;"></i></span><span class="mm-label">Elfbar 40K</span></a></li>
+      <li><a href="produtos.html"><span class="mm-nav-icon"><i data-lucide="pill" style="width:18px;height:18px;"></i></span><span class="mm-label">Nicotine Pouches</span></a></li>
+    </ul>
+    <div class="mm-divider"></div>
+    <div class="mm-section-title">Páginas</div>
+    <ul>
+      <li><a href="index.html"><span class="mm-nav-icon"><i data-lucide="home" style="width:18px;height:18px;"></i></span><span class="mm-label">Home</span></a></li>
+      <li><a href="conta.html"><span class="mm-nav-icon"><i data-lucide="user" style="width:18px;height:18px;"></i></span><span class="mm-label">Minha Conta</span></a></li>
+      <li><a href="carrinho.html"><span class="mm-nav-icon"><i data-lucide="shopping-cart" style="width:18px;height:18px;"></i></span><span class="mm-label">Carrinho</span><span class="mm-arrow">2</span></a></li>
+      <li><a href="blog.html"><span class="mm-nav-icon"><i data-lucide="newspaper" style="width:18px;height:18px;"></i></span><span class="mm-label">Blog</span></a></li>
+    </ul>
+  </nav>
+  <div class="mm-footer">
+    <a href="https://wa.me/5511934741048" target="_blank" class="mm-whatsapp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i> Fale conosco</a>
+  </div>
+</aside>
+<script>
+function openMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileOverlay').classList.add('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('open');
+}
+lucide.createIcons();
+</script>
 </body>
 </html>
